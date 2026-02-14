@@ -40,7 +40,7 @@ const App = () => (
       <ThemeInitializer />
       <Toaster />
       <Sonner />
-      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "") || "/"}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/landing" element={<LandingPage />} />
