@@ -22,7 +22,7 @@
 
   <body style="margin:0;min-height:100vh;background:#f8fafc;color:#1e293b;font-family:system-ui,sans-serif">
     <div id="root">
-      <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem">
+      <div id="loading" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem">
         <p>Loading Focus...</p>
       </div>
     </div>
@@ -32,6 +32,14 @@
         <p>Please enable JavaScript to use this app.</p>
       </div>
     </noscript>
+    <script>
+      setTimeout(function(){
+        var r=document.getElementById('root');
+        if(r&&r.querySelector('#loading')){
+          r.innerHTML='<div style="padding:2rem;text-align:center"><h2>Loading timed out</h2><p style="color:#64748b">The app may have failed to load. Check the browser console (F12) for errors.</p><button onclick="location.reload()" style="margin-top:1rem;padding:0.5rem 1rem;cursor:pointer">Retry</button></div>';
+        }
+      },8000);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
