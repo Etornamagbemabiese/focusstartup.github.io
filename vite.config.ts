@@ -21,7 +21,7 @@ function copy404Plugin() {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/",
+  base: "/focus.github.io/",
   server: {
     host: "::",
     port: 8080,

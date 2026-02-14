@@ -40,7 +40,7 @@ const App = () => (
       <ThemeInitializer />
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/focus.github.io">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/landing" element={<LandingPage />} />
