@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Focus - Student Notes & Calendar App</title>
+    <meta name="description" content="Focus organizes your lecture notes by calendar date and class. Never lose a note, ace your exams with AI-powered study tools." />
+    <meta name="author" content="Focus" />
+    <meta name="keywords" content="student app, lecture notes, calendar, study, transcription, college, university" />
+
+    <meta property="og:title" content="Focus - Student Notes & Calendar App" />
+    <meta property="og:description" content="Focus organizes your lecture notes by calendar date and class. Never lose a note, ace your exams with AI-powered study tools." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Focus" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script crossorigin src="/focusstartup.github.io/assets/index.js"></script>
+  </head>
+
+  <body style="margin:0;min-height:100vh;background:#f8fafc;color:#1e293b;font-family:system-ui,sans-serif">
+    <div id="root">
+      <div id="loading" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem">
+        <p>Loading Focus...</p>
+      </div>
+    </div>
+    <noscript>
+      <div style="padding:2rem;text-align:center">
+        <h1>Focus</h1>
+        <p>Please enable JavaScript to use this app.</p>
+      </div>
+    </noscript>
+    <script>
+      setTimeout(function(){
+        var r=document.getElementById('root');
+        if(r&&r.querySelector('#loading')){
+          r.innerHTML='<div style="padding:2rem;text-align:center"><h2>Loading timed out</h2><p style="color:#64748b">The app may have failed to load. Check the browser console (F12) for errors.</p><button onclick="location.reload()" style="margin-top:1rem;padding:0.5rem 1rem;cursor:pointer">Retry</button></div>';
+        }
+      },8000);
+    </script>
+  </body>
+</html>
