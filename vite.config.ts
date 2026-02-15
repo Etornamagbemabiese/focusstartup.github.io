@@ -9,30 +9,15 @@ function ghPagesPlugin() {
   return {
     name: "gh-pages",
     transformIndexHtml(html: string) {
-      // IIFE build: remove type="module" to avoid MIME type strictness (application/octet-stream)
+      // IIFE build: remove type="module" so GitHub Pages serves as application/javascript
       return html.replace(/\s+type="module"/g, "");
     },
     closeBundle() {
       const outDir = path.resolve(__dirname, "dist");
       const indexPath = path.join(outDir, "index.html");
-      const jsPath = path.join(outDir, "assets", "index.js");
       const notFoundPath = path.join(outDir, "404.html");
       const cnamePath = path.join(__dirname, "CNAME");
       const cnameDest = path.join(outDir, "CNAME");
-
-      // Inline JS into HTML to avoid MIME type issues (application/octet-stream on some hosts)
-      if (fs.existsSync(jsPath) && fs.existsSync(indexPath)) {
-        let jsContent = fs.readFileSync(jsPath, "utf-8");
-        // Escape </script> in JS to prevent HTML parser from closing the tag early
-        jsContent = jsContent.replace(/<\/script>/gi, "\\x3c/script>");
-        let html = fs.readFileSync(indexPath, "utf-8");
-        html = html.replace(
-          /<script[^>]*src="[^"]*\/assets\/index\.js"[^>]*>\s*<\/script>/,
-          `<script>${jsContent}</script>`
-        );
-        fs.writeFileSync(indexPath, html);
-        fs.unlinkSync(jsPath); // Remove external file since it's now inlined
-      }
 
       if (fs.existsSync(indexPath)) {
         fs.copyFileSync(indexPath, notFoundPath);
@@ -47,7 +32,7 @@ function ghPagesPlugin() {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/",
+  base: process.env.VITE_BASE || "/focusstartup.github.io/",
   build: {
     rollupOptions: {
       output: {
